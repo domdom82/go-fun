@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"time"
 )
 
 /*
@@ -29,12 +30,21 @@ func main() {
 		os.Exit(2)
 	}
 
+	if n > m {
+		fmt.Println("<m> must be bigger than <n>.")
+		os.Exit(3)
+	}
+
 	un := uint(n)
 	um := uint(m)
 
 	for i := un; i <= um; i++ {
-		if isPrime(i) {
-			fmt.Printf("Found prime number: %d\n", i)
+		start := time.Now()
+		p := isPrime(i)
+		finish := time.Now()
+		duration := finish.Sub(start)
+		if p {
+			fmt.Printf("Found prime number: %d. Took %s\n", i, duration.String())
 		}
 	}
 
