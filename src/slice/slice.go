@@ -74,4 +74,5 @@ func replaceArrByRef(a *[3]string) {
 	// The address of a is going to be the same as the address of people
 	fmt.Printf("replaceArrByRef: Address of *a=%p\n", &*a)
 	(*a)[2] = "curtis"
+	a[2] = "curtis" //this equal to the line above as a convenience. Go does smart dereferencing of pointers.
 }
